@@ -175,6 +175,14 @@ else ifeq ($(platform), psp1)
 	PLATFORM_DEFINES := -DPSP -G0
 	INCFLAGS_PLATFORM = -I$(shell psp-config --pspsdk-path)/include
 	STATIC_LINKING = 1
+	
+# PlayStation 2
+else ifeq ($(platform), ps2)
+	TARGET := $(TARGET_NAME)_libretro_$(platform).a
+	CC = mips64r5900el-ps2-elf-gcc
+	AR = mips64r5900el-ps2-elf-ar
+	CFLAGS += -G0 -DPS2
+	STATIC_LINKING := 1
 
 # Vita
 else ifeq ($(platform), vita)
